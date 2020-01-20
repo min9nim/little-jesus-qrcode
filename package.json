@@ -1,0 +1,14 @@
+{
+  "name": "little-jesus-qrcode",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron src",
+    "dev": "nodemon electron src"
+  },
+  "devDependencies": {
+    "electron": "^7.1.9",
+    "nodemon": "^2.0.2"
+  }
+}
