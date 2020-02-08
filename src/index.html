@@ -5,12 +5,30 @@
     <title>little-jesus</title>
     <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <style>
+      .result {
+        width: 400px;
+        height: 600px;
+      }
+    </style>
   </head>
   <body>
     <h1>어린이부 출석체크</h1>
-    <input id="code" />
+    <input id="code" onkeyup="check()" />
+    <div class="result"></div>
   </body>
   <script>
-    document.getElementById('code').focus()
+    const input = document.getElementById('code')
+    const result = document.getElementsByClassName('result')[0]
+    input.focus()
+
+    function check() {
+      console.log(55, result.innerHTML)
+      console.log('call', event, event.key, event.key === 'Enter')
+      if (event.key === 'Enter') {
+        result.innerHTML = result.innerHTML + '<br/>' + input.value
+        input.value = ''
+      }
+    }
   </script>
 </html>
