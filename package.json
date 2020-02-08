@@ -4,11 +4,9 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "electron src",
-    "dev": "nodemon electron src"
+    "start": "electron src"
   },
   "devDependencies": {
-    "electron": "^7.1.9",
-    "nodemon": "^2.0.2"
+    "electron": "^7.1.9"
   }
 }
