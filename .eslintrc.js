@@ -1,14 +1,15 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: 'babel-eslint',
     sourceType: 'module',
   },
   env: {
     browser: true,
     node: true,
   },
-  extends: ['standard'],
+  extends: ['standard', 'plugin:vue/recommended'],
   globals: {
     __static: true,
   },
@@ -23,7 +24,7 @@ module.exports = {
       },
     ],
     'no-unused-vars': ['warn', {varsIgnorePattern: 'I[A-Z]*'}],
-    'no-console': ['warn', {allow: ['info', 'warn', 'error']}],
+    'no-console': ['warn', {allow: ['info', 'warn', 'error', 'log']}],
     'object-curly-spacing': 'off',
     'comma-dangle': ['warn', 'always-multiline'],
     // allow paren-less arrow functions

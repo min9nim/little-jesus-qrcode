@@ -5,9 +5,7 @@
 </template>
 
 <script>
-export default {
-  name: 'little-jesus-qrcode',
-}
+export default { name: 'little-jesus-qrcode' }
 </script>
 
 <style>
