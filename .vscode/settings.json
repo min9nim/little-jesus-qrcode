@@ -6,13 +6,17 @@
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "vue"
+    {
+      "language": "html",
+      "autoFix": true
+    }
   ],
   "typescript.format.semicolons": "remove",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "javascript.preferences.quoteStyle": "single",
   "editor.tabSize": 2,
   "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
   "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
   "prettier.singleQuote": true
