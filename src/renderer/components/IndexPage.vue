@@ -1,35 +1,49 @@
 <template>
-  <section>
-    <h1>어린이부 출석체크</h1>
-    <input v-model="input" id="code" onkeyup="check()" @keydown="onlyNumber" @keyup.enter="check" />
-    <div class="result">
-      <ul>
-        <li v-for="(item, idx) in list" :key="idx">{{item}}</li>
-      </ul>
-    </div>
-  </section>
+  <main>
+    <section>
+      <div class="title">
+        <h1>어린이부 출석체크</h1>
+      </div>
+      <input class="input" v-model="input" id="code" onkeyup="check()" @keyup.enter="check" />
+      <div class="result">
+        <h2 v-for="(item, idx) in list" :key="idx">{{item}}</h2>
+      </div>
+    </section>
+  </main>
 </template>
 <script>
 export default {
   name: 'index-page',
   data: () => {
-    return {list: ['송민구', '송하니', ''], input: ''}
+    return {list: [], input: ''}
   },
   methods: {
-    onlyNumber() {
-      if (event.keyCode < 48 || event.keyCode > 57) {
-        event.returnValue = false
-      }
-    },
+    // onlyNumber() {
+    //   if (event.keyCode < 48 || event.keyCode > 57) {
+    //     event.returnValue = false
+    //   }
+    // },
     check() {
-      console.log(33)
+      this.list.push(this.input)
+      this.input = ''
     },
   },
 }
 </script>
-<style scoped>
-.result {
-  width: 400px;
-  height: 600px;
+<style lang="scss" scoped>
+main {
+  padding: 20px;
+  .title {
+    margin-bottom: 20px;
+  }
+  .input {
+    width: 200px;
+    height: 30px;
+  }
+  .result {
+    width: 400px;
+    height: 500px;
+    margin-top: 20px;
+  }
 }
 </style>
