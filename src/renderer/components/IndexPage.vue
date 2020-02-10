@@ -78,10 +78,11 @@ main {
     height: 500px;
     margin-top: 20px;
     .item {
+      margin-bottom: 10px;
       .name {
         display: inline-block;
         width: 100px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         color: #555;
       }
