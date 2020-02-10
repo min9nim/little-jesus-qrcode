@@ -1,0 +1,19 @@
+{
+  "javascript.format.semicolons": "remove",
+  "less.completion.completePropertyWithSemicolon": false,
+  "prettier.semi": false,
+  "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
+  "typescript.format.semicolons": "remove",
+  "editor.formatOnSave": false,
+  "javascript.preferences.quoteStyle": "single",
+  "editor.tabSize": 2,
+  "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+  "prettier.singleQuote": true
+}
