@@ -24,7 +24,7 @@ export default {
     //   }
     // },
     check() {
-      this.list.push(this.input)
+      this.list = [this.input, ...this.list]
       this.input = ''
     },
   },
