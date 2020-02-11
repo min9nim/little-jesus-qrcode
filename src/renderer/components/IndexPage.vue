@@ -18,6 +18,10 @@
 import {codeMap} from '../../biz/codeMap'
 import moment from 'moment'
 import Swal from 'sweetalert2'
+import {req} from '../../utils'
+import {qStudents} from '../../biz/query'
+import {go} from 'mingutils'
+import {prop, find, propEq} from 'ramda'
 
 export default {
   name: 'index-page',
@@ -26,10 +30,13 @@ export default {
       list: [{name: '송하니', time: '12:12:12'}],
       input: '',
       today: moment().format('YYYY-MM-DD'),
+      students: [],
     }
   },
-  mounted() {
+  async mounted() {
     this.$refs.input.focus()
+    const result = await req(qStudents)
+    this.students = result.students
   },
   methods: {
     // onlyNumber() {
@@ -39,6 +46,7 @@ export default {
     // },
     check() {
       const name = codeMap[this.input]
+      const studentId = go(this.students, find(propEq('name', name)), prop('_id'))
       if (!name) {
         Swal.fire({
           icon: 'error',
