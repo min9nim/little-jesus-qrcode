@@ -22,6 +22,9 @@ import {req} from '../../utils'
 import {qStudents, qCheckAttendance} from '../../biz/query'
 import {go} from 'mingutils'
 import {prop, find, propEq} from 'ramda'
+import intervalCall from 'interval-call'
+
+const ALERT_TIMER = 5000
 
 export default {
   name: 'index-page',
@@ -41,22 +44,18 @@ export default {
     this.students = result.students
   },
   methods: {
-    // onlyNumber() {
-    //   if (event.keyCode < 48 || event.keyCode > 57) {
-    //     event.returnValue = false
-    //   }
-    // },
-    async check() {
+    check: intervalCall(500)(async function() {
       const logger = global.logger.addTags('check')
-      const name = codeMap[this.input]
+      const name = isNaN(Number(this.input)) ? this.input : codeMap[this.input]
       const studentId = go(this.students, find(propEq('name', name)), prop('_id'))
+      logger.verbose(name, studentId)
       if (!studentId) {
         Swal.fire({
           icon: 'error',
           title: 'Oops..',
           text: 'The name of code(' + this.input + ') is not found',
           showConfirmButton: true,
-          timer: 3000,
+          timer: ALERT_TIMER,
         })
         this.input = ''
         return
@@ -67,7 +66,7 @@ export default {
           .startOf('week')
           .format('YYYYMMDD'),
       })
-      logger.info(result)
+      logger.info('result =', result)
       this.list = [{name, time: moment().format('HH:mm:ss')}, ...this.list]
       this.input = ''
       Swal.fire({
@@ -75,9 +74,9 @@ export default {
         title: 'Welcome ' + name + ':)',
         text: '출석체크 완료~*',
         showConfirmButton: true,
-        timer: 3000,
+        timer: ALERT_TIMER,
       })
-    },
+    }),
   },
 }
 </script>
