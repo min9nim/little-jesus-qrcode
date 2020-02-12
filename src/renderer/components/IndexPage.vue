@@ -19,7 +19,7 @@ import {codeMap} from '../../biz/codeMap'
 import moment from 'moment'
 import Swal from 'sweetalert2'
 import {req} from '../../utils'
-import {qStudents} from '../../biz/query'
+import {qStudents, qCheckAttendance} from '../../biz/query'
 import {go} from 'mingutils'
 import {prop, find, propEq} from 'ramda'
 
@@ -29,7 +29,9 @@ export default {
     return {
       list: [{name: '송하니', time: '12:12:12'}],
       input: '',
-      today: moment().format('YYYY-MM-DD'),
+      today: moment()
+        .startOf('week')
+        .format('YYYY-MM-DD'),
       students: [],
     }
   },
@@ -44,20 +46,28 @@ export default {
     //     event.returnValue = false
     //   }
     // },
-    check() {
+    async check() {
+      const logger = global.logger.addTags('check')
       const name = codeMap[this.input]
       const studentId = go(this.students, find(propEq('name', name)), prop('_id'))
-      if (!name) {
+      if (!studentId) {
         Swal.fire({
           icon: 'error',
           title: 'Oops..',
-          text: 'The name of code is not founddwd',
+          text: 'The name of code(' + this.input + ') is not found',
           showConfirmButton: true,
           timer: 3000,
         })
         this.input = ''
         return
       }
+      const result = await req(qCheckAttendance, {
+        owner: studentId,
+        date: moment()
+          .startOf('week')
+          .format('YYYYMMDD'),
+      })
+      logger.info(result)
       this.list = [{name, time: moment().format('HH:mm:ss')}, ...this.list]
       this.input = ''
       Swal.fire({
