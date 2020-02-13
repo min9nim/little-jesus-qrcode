@@ -66,7 +66,7 @@ export default {
           .startOf('week')
           .format('YYYYMMDD'),
       })
-      logger.info('result =', result)
+      logger.info('result =', result.checkAttendance)
       this.list = [{name, time: moment().format('HH:mm:ss')}, ...this.list]
       this.input = ''
       Swal.fire({

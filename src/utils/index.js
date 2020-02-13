@@ -7,11 +7,11 @@ const url = {
   dev: 'https://little-jesus-api-git-develop.min1.now.sh',
   local: 'http://localhost:5050',
 }
-let BASEURL = url.dev
+let BASEURL = url.prod2020
 
 export function setApiServer() {
   if (window.location.host.indexOf('localhost') === 0) {
-    BASEURL = url.local
+    BASEURL = url.dev
   }
   global.logger.info('api-server: ' + BASEURL)
 }
