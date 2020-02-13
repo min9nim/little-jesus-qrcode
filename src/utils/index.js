@@ -13,12 +13,6 @@ export function setApiServer() {
   if (window.location.host.indexOf('localhost') === 0) {
     BASEURL = url.local
   }
-  if (window.location.host === 'little-jesus.now.sh') {
-    BASEURL = url.prod
-  }
-  if (window.location.host === 'little-jesus-2020.now.sh') {
-    BASEURL = url.prod2020
-  }
   global.logger.info('api-server: ' + BASEURL)
 }
 
