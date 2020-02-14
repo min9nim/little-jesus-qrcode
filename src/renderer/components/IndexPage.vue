@@ -4,7 +4,10 @@
       <div class="title">
         <h1>어린이부 출석체크({{today}})</h1>
       </div>
-      <input ref="input" class="input" v-model="input" id="code" @keyup.enter="check" />
+      <div class="code">
+        <span>CODE:</span>
+        <input ref="input" class="input" v-model="input" id="code" @keyup.enter="check" />
+      </div>
       <div class="result">
         <div class="item" v-for="(item, idx) in list" :key="idx">
           <div class="name">{{item.name}}</div>-
@@ -24,13 +27,13 @@ import {go} from 'mingutils'
 import {prop, find, propEq} from 'ramda'
 import intervalCall from 'interval-call'
 
-const ALERT_TIMER = 5000
+const ALERT_TIMER = 2000
 
 export default {
   name: 'index-page',
   data: () => {
     return {
-      list: [{name: '송하니', time: '12:12:12'}],
+      list: [],
       input: '',
       today: moment()
         .startOf('week')
@@ -82,26 +85,38 @@ export default {
 </script>
 <style lang="scss" scoped>
 main {
-  padding: 20px;
-  .title {
-    margin-bottom: 20px;
-  }
-  .input {
-    width: 200px;
-    height: 30px;
-  }
-  .result {
-    width: 400px;
-    height: 500px;
-    margin-top: 20px;
-    .item {
-      margin-bottom: 10px;
-      .name {
-        display: inline-block;
-        width: 100px;
-        font-size: 20px;
+  section {
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    .title {
+      margin-bottom: 20px;
+    }
+    .code {
+      span {
+        margin-right: 5px;
+        font-size: 16px;
         font-weight: bold;
         color: #555;
+      }
+    }
+    .input {
+      width: 200px;
+      height: 30px;
+    }
+    .result {
+      flex: 1;
+      overflow: auto;
+      margin-top: 20px;
+      .item {
+        margin-bottom: 10px;
+        .name {
+          display: inline-block;
+          width: 100px;
+          font-size: 20px;
+          font-weight: bold;
+          color: #555;
+        }
       }
     }
   }
