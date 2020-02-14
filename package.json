@@ -46,10 +46,18 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "target": [
+        "zip",
+        "nsis"
+      ]
     },
     "linux": {
       "icon": "build/icons"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   },
   "dependencies": {
