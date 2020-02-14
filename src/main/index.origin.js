@@ -1,6 +1,7 @@
 'use strict'
 
-import {app, BrowserWindow} from 'electron'
+import {BrowserWindow, app} from 'electron'
+import setMenu from './menu'
 
 /**
  * Set `__static` path to static files in production
@@ -19,6 +20,7 @@ const winURL =
     : `file://${__dirname}/index.html`
 
 function createWindow() {
+  setMenu()
   /**
    * Initial window options
    */
