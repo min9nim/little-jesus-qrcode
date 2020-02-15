@@ -20,7 +20,7 @@
   },
   "build": {
     "productName": "little-jesus-qrcode",
-    "appId": "com.example.yourapp",
+    "appId": "little.jesus.qrcode",
     "directories": {
       "output": "build"
     },
