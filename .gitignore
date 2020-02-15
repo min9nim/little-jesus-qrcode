@@ -3,6 +3,7 @@ dist/electron/*
 dist/web/*
 build/*
 !build/icons
+!build/little-jesus-qrcode*.exe
 node_modules/
 npm-debug.log
 npm-debug.log.*
