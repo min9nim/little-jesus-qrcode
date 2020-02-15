@@ -11,6 +11,3 @@ thumbs.db
 !.gitkeep
 yarn-error.log
 yarn.lock
-
-build
-!build/icons
